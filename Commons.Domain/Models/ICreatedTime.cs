@@ -1,7 +1,6 @@
-﻿namespace Commons.Domain.Models
+﻿namespace Commons.Domain.Models;
+
+public interface ICreatedTime
 {
-    public interface ICreatedTime
-    {
-        DateTime CreatedTime { get; }
-    }
+    DateTime CreatedTime { get; }
 }

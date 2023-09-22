@@ -1,9 +1,8 @@
-﻿namespace FileService.Domain
-{
-    public interface IStorageClient
-    {
-        StorageType StorageType { get; set; }
+﻿namespace FileService.Domain;
 
-        Task<Uri> SaveFileAsync(string key, Stream content, CancellationToken cancellationToken = default);
-    }
+public interface IStorageClient
+{
+    StorageType StorageType { get; }
+
+    Task<Uri> SaveFileAsync(string key, Stream content, CancellationToken cancellationToken = default);
 }

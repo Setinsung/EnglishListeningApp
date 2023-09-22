@@ -1,6 +1,5 @@
-﻿namespace Commons.Domain.Models
+﻿namespace Commons.Domain.Models;
+
+public interface IAggregateRoot
 {
-    public interface IAggregateRoot
-    {
-    }
 }

@@ -1,8 +1,7 @@
-﻿namespace Commons.Domain.Models
+﻿namespace Commons.Domain.Models;
+
+public interface ISoftDelete
 {
-    public interface ISoftDelete
-    {
-        bool IsDeleted { get;}
-        void SoftDelete();
-    }
+    bool IsDeleted { get;}
+    void SoftDelete();
 }

@@ -1,8 +1,7 @@
-﻿namespace FileService.Domain
+﻿namespace FileService.Domain;
+
+public enum StorageType
 {
-    public enum StorageType
-    {
-        Public, // 公开访问存储设备
-        Backup // 内部存储设备
-    }
+    Public, // 公开访问存储设备
+    Backup // 内部存储设备
 }

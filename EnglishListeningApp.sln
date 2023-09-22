@@ -7,13 +7,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FileService", "FileService"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileService.WebAPI", "FileService.WebAPI\FileService.WebAPI.csproj", "{7A0799D6-8637-4D73-92E3-D80BCCAEFA47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileService.Domain", "FileService.Domain\FileService.Domain.csproj", "{72A189DE-262B-4DAC-BB00-2BC192E0A312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileService.Domain", "FileService.Domain\FileService.Domain.csproj", "{72A189DE-262B-4DAC-BB00-2BC192E0A312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileService.Infrastructure", "FileService.Infrastructure\FileService.Infrastructure.csproj", "{85D7E50F-B334-4D5F-84A9-33F81B9E1648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileService.Infrastructure", "FileService.Infrastructure\FileService.Infrastructure.csproj", "{85D7E50F-B334-4D5F-84A9-33F81B9E1648}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{17E04B90-22EA-4B99-AC1A-24E93C0EA19D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons.Domain", "Commons.Domain\Commons.Domain.csproj", "{D56FAEC7-5462-4739-95E6-22EB263AFDDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commons.Domain", "Commons.Domain\Commons.Domain.csproj", "{D56FAEC7-5462-4739-95E6-22EB263AFDDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons.Extensions", "Commons.Extensions\Commons.Extensions.csproj", "{51155CEF-D82A-44EE-9DBE-5561CC49B6AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons.Helpers", "Commons.Helpers\Commons.Helpers.csproj", "{95A485FF-CDFD-40D9-9875-8A7E1A665D45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons.Infrastructure", "Commons.Infrastructure\Commons.Infrastructure.csproj", "{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,18 @@ Global
 		{D56FAEC7-5462-4739-95E6-22EB263AFDDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D56FAEC7-5462-4739-95E6-22EB263AFDDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D56FAEC7-5462-4739-95E6-22EB263AFDDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51155CEF-D82A-44EE-9DBE-5561CC49B6AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51155CEF-D82A-44EE-9DBE-5561CC49B6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51155CEF-D82A-44EE-9DBE-5561CC49B6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51155CEF-D82A-44EE-9DBE-5561CC49B6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A485FF-CDFD-40D9-9875-8A7E1A665D45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A485FF-CDFD-40D9-9875-8A7E1A665D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A485FF-CDFD-40D9-9875-8A7E1A665D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A485FF-CDFD-40D9-9875-8A7E1A665D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +64,9 @@ Global
 		{72A189DE-262B-4DAC-BB00-2BC192E0A312} = {B2D0D014-0965-427A-9C8D-C7AD8315ADF1}
 		{85D7E50F-B334-4D5F-84A9-33F81B9E1648} = {B2D0D014-0965-427A-9C8D-C7AD8315ADF1}
 		{D56FAEC7-5462-4739-95E6-22EB263AFDDE} = {17E04B90-22EA-4B99-AC1A-24E93C0EA19D}
+		{51155CEF-D82A-44EE-9DBE-5561CC49B6AF} = {17E04B90-22EA-4B99-AC1A-24E93C0EA19D}
+		{95A485FF-CDFD-40D9-9875-8A7E1A665D45} = {17E04B90-22EA-4B99-AC1A-24E93C0EA19D}
+		{7F99D01C-C2C0-4DA9-85A1-BE33C6BFA760} = {17E04B90-22EA-4B99-AC1A-24E93C0EA19D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {859416E3-73D7-43C0-9CCA-E9771F6EBDC2}
