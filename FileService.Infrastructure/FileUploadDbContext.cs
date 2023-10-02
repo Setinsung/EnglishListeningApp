@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Commons.Infrastructure;
+using FileService.Domain.Entities;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
 
-namespace FileService.Infrastructure
+namespace FileService.Infrastructure;
+
+public class FileUploadDbContext : BaseDbContext
 {
-    internal class FileUploadDbContext
+    public DbSet<UploadedItem> UploadedItems { get; set; }
+    public FileUploadDbContext(DbContextOptions options, IMediator? mediator) : base(options, mediator)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+        modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
     }
 }

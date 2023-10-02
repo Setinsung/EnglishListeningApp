@@ -11,4 +11,5 @@ public interface IFileServiceRepository
     /// <param name="sha256Hash"></param>
     /// <returns></returns>
     Task<UploadedItem?> FindFileAsync(long fileSize, string sha256Hash);
+    Task<UploadedItem> FindFileOrCreateAsync(long fileSize, string fileHash, Func<Task<UploadedItem>> valueFactory);
 }

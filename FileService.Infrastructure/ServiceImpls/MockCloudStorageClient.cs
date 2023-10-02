@@ -26,7 +26,7 @@ public class MockCloudStorageClient : IStorageClient
         string fullPath = Path.Combine(workingDir, key);
         string? fullDir = Path.GetDirectoryName(fullPath);
         Directory.CreateDirectory(fullDir);
-        if(File.Exists(fullPath)) File.Delete(fullPath); // 已存在删除
+        if(File.Exists(fullPath)) File.Delete(fullPath); // 已存在则删除
         using Stream outStream = File.OpenWrite(fullPath);
         await content.CopyToAsync(outStream,cancellationToken);
         var req = _httpContextAccessor.HttpContext.Request;
