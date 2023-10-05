@@ -32,7 +32,7 @@ public class RabbitMQConnection
 
     public bool TryConnect()
     {
-        lock (sync_root) // 互斥锁，以下代码只允许同一线程执行
+        lock (sync_root) // 互斥锁，同一时间只有一个线程可以执行连接操作
         {
             _connection = _connectionFactory.CreateConnection();
             if (!IsConnected) return false;

@@ -1,6 +1,6 @@
 ﻿namespace Commons.EventBus;
 /// <summary>
-/// 提供事件处理的注册和事件的分发机制
+/// 存储事件和订阅类关系的数据结构，用于管理添加订阅删除订阅，获取事件所有监听者等
 /// </summary>
 public class SubscriptionsManager
 {
@@ -35,7 +35,7 @@ public class SubscriptionsManager
     public void RemoveSubscription(string eventName, Type eventHandlerType)
     {
         _handlers[eventName].Remove(eventHandlerType);
-        if (!_handlers[eventName].Any()) // 如果事件无监听者了，那么再把事件移除，触发回调
+        if (!_handlers[eventName].Any()) // 如果事件没有一个监听者了，那么再把事件移除，触发回调
         {
             _handlers.Remove(eventName);
             OnEventRemoved?.Invoke(this, eventName);

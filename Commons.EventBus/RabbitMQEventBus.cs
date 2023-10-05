@@ -71,13 +71,13 @@ public class RabbitMQEventBus : IEventBus, IDisposable
 
     public void Dispose()
     {
-        if(_consumerChannel!=null) _consumerChannel.Dispose();
+        if (_consumerChannel != null) _consumerChannel.Dispose();
         _subsManager.Clear();
         _persistentConnection.Dispose();
         _serviceScope.Dispose();
     }
 
-    private void CheckHandlerType(Type handlerType)
+    private void CheckHandlerType(Type handlerType) // 检查handlerType是否实现IIntegrationEventHandler接口
     {
         if (!typeof(IIntegrationEventHandler).IsAssignableFrom(handlerType))
         {
@@ -99,9 +99,9 @@ public class RabbitMQEventBus : IEventBus, IDisposable
         );
     }
 
-    private void StartBasicConsume()
+    private void StartBasicConsume() // 开始消费信息
     {
-        if(_consumerChannel == null) return;
+        if (_consumerChannel == null) return;
         var consumer = new AsyncEventingBasicConsumer(_consumerChannel);
         consumer.Received += Comsumer_Received;
         _consumerChannel.BasicConsume(
@@ -111,7 +111,7 @@ public class RabbitMQEventBus : IEventBus, IDisposable
         );
     }
 
-    private async Task Comsumer_Received(object sender, BasicDeliverEventArgs eventArgs)
+    private async Task Comsumer_Received(object sender, BasicDeliverEventArgs eventArgs) // 信息接收
     {
         var eventName = eventArgs.RoutingKey; // 此处eventName就是routingKey
         var message = Encoding.UTF8.GetString(eventArgs.Body.Span);// 要求所有的消息都是字符串的json
@@ -128,7 +128,7 @@ public class RabbitMQEventBus : IEventBus, IDisposable
         }
     }
 
-    private async Task ProcessEvent(string eventName, string message)
+    private async Task ProcessEvent(string eventName, string message) // 具体由eventName的所有监听者收取消息
     {
         if (!_subsManager.HasSubscriptionsForEvent(eventName))
         {
@@ -138,17 +138,17 @@ public class RabbitMQEventBus : IEventBus, IDisposable
         else
         {
             var subscriptions = _subsManager.GetHandlersForEvent(eventName);
-            foreach ( var subscription in subscriptions )
+            foreach (var subscription in subscriptions)
             {
                 // 各自在不同的Scope中，避免DbContext等的共享造成问题
                 IIntegrationEventHandler? handler = _serviceScope.ServiceProvider.GetService(subscription) as IIntegrationEventHandler;
-                if(handler == null) throw new ApplicationException($"无法创建{subscription}类型的服务");
+                if (handler == null) throw new ApplicationException($"无法创建{subscription}类型的服务");
                 await handler.Handle(eventName, message);
             }
         }
     }
 
-    private IModel CreateConsumerChannel()
+    private IModel CreateConsumerChannel() // 创建消费者信道连接
     {
         if (!_persistentConnection.IsConnected) _persistentConnection.TryConnect();
         var channel = _persistentConnection.CreateModel();
@@ -160,14 +160,14 @@ public class RabbitMQEventBus : IEventBus, IDisposable
             autoDelete: false,
             arguments: null
         );
-        channel.CallbackException += (sender, ea) =>
+        channel.CallbackException += (sender, ea) => // 消息处理失败
         {
             Debug.Fail(ea.ToString());
         };
         return channel;
     }
 
-    private void SubsManager_OnEventRemoved(object? sender, string eventName)
+    private void SubsManager_OnEventRemoved(object? sender, string eventName) // 事件移除时，取消交换机对队列的绑定
     {
         if (!_persistentConnection.IsConnected) _persistentConnection.TryConnect();
         using var channel = _persistentConnection.CreateModel();
