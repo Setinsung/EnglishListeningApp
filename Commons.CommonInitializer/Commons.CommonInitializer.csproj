@@ -1,9 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+	<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Serilog.AspNetCore" Version="7.0.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+    <PackageReference Include="Zack.AnyDBConfigProvider" Version="1.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commons.EventBus\Commons.EventBus.csproj" />
+    <ProjectReference Include="..\Commons.Extensions\Commons.Extensions.csproj" />
+    <ProjectReference Include="..\Commons.Helpers\Commons.Helpers.csproj" />
+    <ProjectReference Include="..\Commons.Infrastructure\Commons.Infrastructure.csproj" />
+    <ProjectReference Include="..\Commons.JWT\Commons.JWT.csproj" />
+  </ItemGroup>
 
 </Project>
