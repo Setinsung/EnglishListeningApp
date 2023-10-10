@@ -15,9 +15,9 @@ public class UnitOfWorkFilterAttribute : ActionFilterAttribute
     {
         var result = await next();
         if (result.Exception != null) return;
+        var sp = context.HttpContext.RequestServices;
         foreach (var dbCtxType in DbContextTypes)
         {
-            var sp = context.HttpContext.RequestServices;
             DbContext dbCtx = (DbContext)sp.GetRequiredService(dbCtxType);
             await dbCtx.SaveChangesAsync();
         }
