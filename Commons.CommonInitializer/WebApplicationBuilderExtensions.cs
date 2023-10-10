@@ -1,6 +1,6 @@
 ﻿using Commons.EventBus;
-using Commons.Extensions;
 using Commons.Helpers;
+using Commons.Helpers.JsonConverters;
 using Commons.Infrastructure;
 using Commons.JWT;
 using FluentValidation;

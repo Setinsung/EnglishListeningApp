@@ -1,14 +1,17 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace Commons.Helpers;
+namespace Commons.Helpers.JsonConverters;
 
+/// <summary>
+/// 自定义的DateTime类型的Json转换器。
+/// </summary>
 public class DateTimeJsonConverter : JsonConverter<DateTime>
 {
     private readonly string _dateFormatString;
     public DateTimeJsonConverter()
     {
-        _dateFormatString = "yyyy-MM-dd HH:mm:ss";  
+        _dateFormatString = "yyyy-MM-dd HH:mm:ss";
     }
     public DateTimeJsonConverter(string dateFormatString)
     {
@@ -18,7 +21,7 @@ public class DateTimeJsonConverter : JsonConverter<DateTime>
     public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         string? str = reader.GetString();
-        if (str == null) return default(DateTime);
+        if (str == null) return default;
         else return DateTime.Parse(str);
     }
 

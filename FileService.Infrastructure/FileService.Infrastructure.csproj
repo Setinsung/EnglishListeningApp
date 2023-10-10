@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commons.Extensions\Commons.Extensions.csproj" />
     <ProjectReference Include="..\Commons.Infrastructure\Commons.Infrastructure.csproj" />
     <ProjectReference Include="..\FileService.Domain\FileService.Domain.csproj" />
   </ItemGroup>
