@@ -38,7 +38,7 @@ public static class ReflectionHelper
         var returnAssemblies = new HashSet<Assembly>(new AssemblyEquality());
         var loadedAssemblies = new HashSet<string>();
         var assembliesToCheck = new Queue<Assembly>();
-        
+
         // 如果不跳过系统程序集，或者跳过系统程序集但根程序集不是系统程序集，则将根程序集添加到返回集合中
         if (!skipSystemAssemblies || skipSystemAssemblies && !IsSystemAssembly(rootAssembly))
         {

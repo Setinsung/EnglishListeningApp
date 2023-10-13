@@ -43,7 +43,7 @@ public static class WebApplicationBuilderExtensions
         services.AddAllDbContext(ctx =>
         {
             string connStr = builder.Configuration.GetConnectionString("Default");
-            ctx.UseSqlServer(connStr);
+            ctx.UseSqlServer(connStr, b=>b.MigrationsAssembly(Assembly.GetExecutingAssembly().GetName().Name));
         }, assemblies);
 
         // 配置授权和鉴权，JWT，swagger可携带JWT
