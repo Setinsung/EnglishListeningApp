@@ -85,11 +85,11 @@ public interface IIdentityServiceRepository
     Task<IdentityResult> AddToRoleAsync(User user, Role role);
 
     /// <summary>
-    /// 检查用户是否可以登录
+    /// 检查用户是否可以登录。可选是否同时调用方法记录登录失败，对于多次重复失败将进行账号禁用
     /// </summary>
     /// <param name="user">用户实体</param>
     /// <param name="password">密码</param>
-    /// <param name="lockoutOnFailure">若登录失败，是否调用方法记录一次失败</param>
+    /// <param name="lockoutOnFailure">若登录失败，是否记录</param>
     /// <returns>登录结果</returns>
     Task<SignInResult> CheckForSignInAsync(User user, string password, bool lockoutOnFailure);
 
