@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Commons.Domain\Commons.Domain.csproj" />
+    <ProjectReference Include="..\Commons.JWT\Commons.JWT.csproj" />
   </ItemGroup>
 
 </Project>
