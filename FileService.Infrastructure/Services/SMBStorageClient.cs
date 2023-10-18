@@ -1,7 +1,7 @@
 ﻿using FileService.Domain;
 using Microsoft.Extensions.Options;
 
-namespace FileService.Infrastructure.ServiceImpls;
+namespace FileService.Infrastructure.Services;
 
 public class SMBStorageClient : IStorageClient
 {

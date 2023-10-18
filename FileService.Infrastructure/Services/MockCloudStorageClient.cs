@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 
-namespace FileService.Infrastructure.ServiceImpls;
+namespace FileService.Infrastructure.Services;
 
 /// <summary>
 /// 模拟使用，实际保存在wwwroot下

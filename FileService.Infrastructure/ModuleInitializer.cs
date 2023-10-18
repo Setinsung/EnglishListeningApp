@@ -1,6 +1,6 @@
 ﻿using Commons.Helpers;
 using FileService.Domain;
-using FileService.Infrastructure.ServiceImpls;
+using FileService.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FileService.Infrastructure;

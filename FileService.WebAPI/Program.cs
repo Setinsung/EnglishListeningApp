@@ -1,5 +1,5 @@
 using Commons.CommonInitializer;
-using FileService.Infrastructure.ServiceImpls;
+using FileService.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.ConfigureDbConfiguration();
