@@ -80,9 +80,9 @@ public interface IIdentityServiceRepository
     /// 将用户添加到角色
     /// </summary>
     /// <param name="user">用户实体</param>
-    /// <param name="role">角色</param>
+    /// <param name="roleName">角色名称</param>
     /// <returns>身份验证结果</returns>
-    Task<IdentityResult> AddToRoleAsync(User user, Role role);
+    Task<IdentityResult> AddToRoleAsync(User user, string roleName);
 
     /// <summary>
     /// 检查用户是否可以登录。可选是否同时调用方法记录登录失败，对于多次重复失败将进行账号禁用
@@ -107,7 +107,7 @@ public interface IIdentityServiceRepository
     Task UpdatePhoneNumberAsync(Guid userId, string phoneNum);
 
     /// <summary>
-    /// 移除用户
+    /// 移除用户 (软删除)
     /// </summary>
     /// <param name="userId">用户Id</param>
     /// <returns>身份验证结果</returns>

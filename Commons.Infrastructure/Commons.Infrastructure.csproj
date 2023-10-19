@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Commons.Domain\Commons.Domain.csproj" />
+    <ProjectReference Include="..\Commons.Helpers\Commons.Helpers.csproj" />
   </ItemGroup>
 
 </Project>
