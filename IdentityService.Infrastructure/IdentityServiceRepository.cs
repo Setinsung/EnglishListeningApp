@@ -53,7 +53,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return await _userManager.AddToRoleAsync(user, roleName);
     }
 
-    public async Task<IdentityResult> ChangePasswordAsync(Guid userId, string password)
+    public async Task<IdentityResult> ChangePasswordAsync(string userId, string password)
     {
         if (password.Length < 6)
             return IdentityResult.Failed(new IdentityError()
@@ -67,7 +67,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return resetPwdResult;
     }
 
-    public async Task<SignInResult> ChangePhoneNumAsync(Guid userId, string phoneNum, string token)
+    public async Task<SignInResult> ChangePhoneNumAsync(string userId, string phoneNum, string token)
     {
         User user = await FindByIdOrThrowAsync(userId);
         IdentityResult changeResult = await _userManager.ChangePhoneNumberAsync(user, phoneNum, token);
@@ -80,7 +80,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         }
         else
         {
-            await ConfirmPhoneNumberAsync(user.Id);
+            await ConfirmPhoneNumberAsync(userId);
             return SignInResult.Success;
         }
     }
@@ -101,7 +101,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
 
     }
 
-    public async Task ConfirmPhoneNumberAsync(Guid userId)
+    public async Task ConfirmPhoneNumberAsync(string userId)
     {
         User user = await FindByIdOrThrowAsync(userId);
         user.PhoneNumberConfirmed = true;
@@ -113,9 +113,9 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return _userManager.CreateAsync(user, password);
     }
 
-    public Task<User?> FindByIdAsync(Guid userId)
+    public Task<User?> FindByIdAsync(string userId)
     {
-        return _userManager.FindByIdAsync(userId.ToString());
+        return _userManager.FindByIdAsync(userId);
     }
 
 
@@ -140,7 +140,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return _userManager.GetRolesAsync(user);
     }
 
-    public async Task<IdentityResult> RemoveUserAsync(Guid userId)
+    public async Task<IdentityResult> RemoveUserAsync(string userId)
     {
         User user = await FindByIdOrThrowAsync(userId);
         var userLoginStore = _userManager.UserLoginStore;
@@ -155,7 +155,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return result;
     }
 
-    public async Task<(IdentityResult identityResult, User? user, string? password)> ResetPasswordAsync(Guid userId)
+    public async Task<(IdentityResult identityResult, User? user, string? password)> ResetPasswordAsync(string userId)
     {
         User user = await FindByIdOrThrowAsync(userId);
         string password = GeneratePassword();
@@ -165,7 +165,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
         return (identityResult, user, password);
     }
 
-    public async Task UpdatePhoneNumberAsync(Guid userId, string phoneNum)
+    public async Task UpdatePhoneNumberAsync(string userId, string phoneNum)
     {
         User user = await FindByIdOrThrowAsync(userId);
         user.PhoneNumber = phoneNum;
@@ -231,7 +231,7 @@ public class IdentityServiceRepository : IIdentityServiceRepository
     /// <param name="userId">要查找的用户ID。</param>
     /// <returns>找到的用户。</returns>
     /// <exception cref="ArgumentException">当找不到指定ID的用户时抛出。</exception>
-    private async Task<User> FindByIdOrThrowAsync(Guid userId)
+    private async Task<User> FindByIdOrThrowAsync(string userId)
     {
         return await FindByIdAsync(userId)
             ?? throw new ArgumentException($"{userId}的用户不存在");

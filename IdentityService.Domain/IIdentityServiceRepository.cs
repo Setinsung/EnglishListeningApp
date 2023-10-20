@@ -13,7 +13,7 @@ public interface IIdentityServiceRepository
     /// </summary>
     /// <param name="userId">用户Id</param>
     /// <returns>用户实体</returns>
-    Task<User?> FindByIdAsync(Guid userId);
+    Task<User?> FindByIdAsync(string userId);
 
     /// <summary>
     /// 根据用户名获取用户
@@ -59,7 +59,7 @@ public interface IIdentityServiceRepository
     /// <param name="phoneNum">手机号</param>
     /// <param name="token">令牌</param>
     /// <returns>登录结果</returns>
-    Task<SignInResult> ChangePhoneNumAsync(Guid userId, string phoneNum, string token);
+    Task<SignInResult> ChangePhoneNumAsync(string userId, string phoneNum, string token);
 
     /// <summary>
     /// 更改密码
@@ -67,7 +67,7 @@ public interface IIdentityServiceRepository
     /// <param name="userId">用户Id</param>
     /// <param name="password">密码</param>
     /// <returns>身份验证结果</returns>
-    Task<IdentityResult> ChangePasswordAsync(Guid userId, string password);
+    Task<IdentityResult> ChangePasswordAsync(string userId, string password);
 
     /// <summary>
     /// 获取用户的角色列表
@@ -97,21 +97,21 @@ public interface IIdentityServiceRepository
     /// 确认手机号
     /// </summary>
     /// <param name="userId">用户Id</param>
-    Task ConfirmPhoneNumberAsync(Guid userId);
+    Task ConfirmPhoneNumberAsync(string userId);
 
     /// <summary>
     /// 更新手机号
     /// </summary>
     /// <param name="userId">用户Id</param>
     /// <param name="phoneNum">手机号</param>
-    Task UpdatePhoneNumberAsync(Guid userId, string phoneNum);
+    Task UpdatePhoneNumberAsync(string userId, string phoneNum);
 
     /// <summary>
     /// 移除用户 (软删除)
     /// </summary>
     /// <param name="userId">用户Id</param>
     /// <returns>身份验证结果</returns>
-    Task<IdentityResult> RemoveUserAsync(Guid userId);
+    Task<IdentityResult> RemoveUserAsync(string userId);
 
     /// <summary>
     /// 添加管理员用户
@@ -126,6 +126,6 @@ public interface IIdentityServiceRepository
     /// </summary>
     /// <param name="userId">用户Id</param>
     /// <returns>身份验证结果、用户实体和密码</returns>
-    Task<(IdentityResult identityResult, User? user, string? password)> ResetPasswordAsync(Guid userId);
+    Task<(IdentityResult identityResult, User? user, string? password)> ResetPasswordAsync(string userId);
 
 }

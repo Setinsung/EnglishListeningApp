@@ -2,6 +2,7 @@
 using IdentityService.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace IdentityService.Domain;
@@ -51,6 +52,28 @@ public class IdDomainService
             token = await this.BuildTokenAsync(user);
         }
         return (checkResult, token);
+    }
+    /// <summary>
+    /// 创建admin用户
+    /// </summary>
+    /// <returns></returns>
+    public async Task<bool> CreateWorld()
+    {
+        if (await _identityServiceRepository.FindByNameAsync("admin") != null) return false;
+        string userName = "admin";
+        string pwd = "123456";
+        string phoneNum = "18918999999";
+        User user = new(userName);
+        IdentityResult createRs = await _identityServiceRepository.CreateAsync(user, pwd);
+        Debug.Assert(createRs.Succeeded);
+        string token = await _identityServiceRepository.GenerateChangePhoneNumberTokenAsync(user, phoneNum);
+        SignInResult changePhoneNumRs = await _identityServiceRepository.ChangePhoneNumAsync(user.Id.ToString(), phoneNum, token);
+        Debug.Assert(changePhoneNumRs.Succeeded);
+        IdentityResult addToRoleRs = await _identityServiceRepository.AddToRoleAsync(user, "User");
+        Debug.Assert(addToRoleRs.Succeeded);
+        addToRoleRs = await _identityServiceRepository.AddToRoleAsync(user, "Admin");
+        Debug.Assert(addToRoleRs.Succeeded);
+        return true;
     }
 
     private async Task<string> BuildTokenAsync(User user)
