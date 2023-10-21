@@ -1,7 +1,7 @@
 ﻿using Commons.EventBus;
 using IdentityService.Domain;
 using IdentityService.Infrastructure;
-using IdentityService.WebAPI.Controllers.Events;
+using IdentityService.WebAPI.Events;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -73,7 +73,7 @@ public class UsersController : ControllerBase
         if (!resetPwdRs.Succeeded) return BadRequest(resetPwdRs.Errors.SumErrors());
         // 发布事件
         var eventData = new ResetPasswordEvent(user.Id, user.UserName, password, user.PhoneNumber);
-        eventBus.Publish("IdentityService.User.PasswordReset", eventData);
+        _eventBus.Publish("IdentityService.User.PasswordReset", eventData);
         return Ok();
     }
 }

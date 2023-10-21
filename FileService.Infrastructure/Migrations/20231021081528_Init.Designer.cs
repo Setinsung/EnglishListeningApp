@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FileService.Infrastructure.Migrations
 {
     [DbContext(typeof(FileUploadDbContext))]
-    [Migration("20231013180931_Init")]
+    [Migration("20231021081528_Init")]
     partial class Init
     {
         /// <inheritdoc />
