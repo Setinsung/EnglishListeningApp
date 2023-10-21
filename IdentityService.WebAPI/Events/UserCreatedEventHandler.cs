@@ -3,6 +3,7 @@ using IdentityService.Domain;
 
 namespace IdentityService.WebAPI.Events;
 
+[EventName("IdentityService.User.Created")]
 public class UserCreatedEventHandler : JsonIntegrationEventHandler<UserCreatedEvent>
 {
     private readonly ILogger<UserCreatedEventHandler> _logger;

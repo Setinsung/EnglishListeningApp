@@ -24,7 +24,7 @@ public class LoginController : ControllerBase
     public async Task<ActionResult> CreateWorld()
     {
         bool ok = await _idDomainService.CreateWorld();
-        if (ok)
+        if (!ok)
             return StatusCode((int)HttpStatusCode.Conflict, "已经初始化过了");
         else
             return Ok();

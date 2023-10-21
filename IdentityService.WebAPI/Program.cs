@@ -39,7 +39,7 @@ identityBuilder
     .AddEntityFrameworkStores<IdDbContext>()
     .AddDefaultTokenProviders() 
     .AddRoleManager<RoleManager<Role>>()
-    .AddUserManager<UserManager<User>>();
+    .AddUserManager<IdUserManager>();
 
 
 //if (builder.Environment.IsDevelopment())

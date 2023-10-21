@@ -47,7 +47,7 @@ public class IdDomainService
     {
         var (checkResult , user)  = await this.CheckUserNameAndPwdAsync(userName, password);
         string? token = null;
-        if(!checkResult.Succeeded && user != null)
+        if(checkResult.Succeeded && user != null)
         {
             token = await this.BuildTokenAsync(user);
         }
