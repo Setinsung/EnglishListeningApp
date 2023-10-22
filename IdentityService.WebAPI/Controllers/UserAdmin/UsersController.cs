@@ -31,9 +31,10 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<UserDTO> FindById(string id)
+    public async Task<ActionResult<UserDTO>> FindById(string id)
     {
         var user = await _userManager.FindByIdAsync(id);
+        if(user == null) return NotFound("用户没找到");
         return UserDTO.Create(user);
     }
 
