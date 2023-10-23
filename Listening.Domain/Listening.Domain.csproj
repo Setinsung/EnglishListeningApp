@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Opportunity.LrcParser" Version="1.0.4" />
+    <PackageReference Include="SubtitlesParser" Version="1.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commons.Domain\Commons.Domain.csproj" />
+    <ProjectReference Include="..\Commons.Helpers\Commons.Helpers.csproj" />
+  </ItemGroup>
+
 </Project>
