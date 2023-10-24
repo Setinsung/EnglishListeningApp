@@ -51,10 +51,10 @@ public record Episode : AggregateRootEntity
     public bool IsVisible { get; private set; }
 
     /// <summary>
-    /// 更改序号并返回当前 Episode 实例。
+    /// 更改序号并返回当前音频实例。
     /// </summary>
     /// <param name="value">要更改的序号。</param>
-    /// <returns>当前 Episode 实例。</returns>
+    /// <returns>当前音频实例。</returns>
     public Episode ChangeSequenceNumber(int value)
     {
         this.SequenceNumber = value;
@@ -63,10 +63,10 @@ public record Episode : AggregateRootEntity
     }
 
     /// <summary>
-    /// 更改名称并返回当前 Episode 实例。
+    /// 更改名称并返回当前音频实例。
     /// </summary>
     /// <param name="value">要更改的名称。</param>
-    /// <returns>当前 Episode 实例。</returns>
+    /// <returns>当前音频实例。</returns>
     public Episode ChangeName(MultilingualString value)
     {
         this.Name = value;
@@ -75,11 +75,11 @@ public record Episode : AggregateRootEntity
     }
 
     /// <summary>
-    /// 更改字幕类型和字幕内容并返回当前 Episode 实例。
+    /// 更改字幕类型和字幕内容并返回当前音频实例。
     /// </summary>
     /// <param name="subtitleType">字幕类型。</param>
     /// <param name="subtitle">字幕内容。</param>
-    /// <returns>当前 Episode 实例。</returns>
+    /// <returns>当前音频实例。</returns>
     public Episode ChangeSubtitle(string subtitleType, string subtitle)
     {
         _ = SubtitleParserFactory.GetParser(subtitleType)
@@ -91,9 +91,9 @@ public record Episode : AggregateRootEntity
     }
 
     /// <summary>
-    /// 隐藏当前 Episode 实例。
+    /// 隐藏当前音频实例。
     /// </summary>
-    /// <returns>当前 Episode 实例。</returns>
+    /// <returns>当前音频实例。</returns>
     public Episode Hide()
     {
         this.IsVisible = false;
@@ -102,9 +102,9 @@ public record Episode : AggregateRootEntity
     }
 
     /// <summary>
-    /// 显示当前 Episode 实例。
+    /// 显示当前音频实例。
     /// </summary>
-    /// <returns>当前 Episode 实例。</returns>
+    /// <returns>当前音频实例。</returns>
     public Episode Show()
     {
         this.IsVisible = true;
@@ -113,7 +113,7 @@ public record Episode : AggregateRootEntity
     }
 
     /// <summary>
-    /// 软删除当前 Episode 实例。
+    /// 软删除当前音频实例。
     /// </summary>
     public override void SoftDelete()
     {
@@ -234,9 +234,9 @@ public record Episode : AggregateRootEntity
         }
 
         /// <summary>
-        /// 构建并返回一个 Episode 实例。
+        /// 构建并返回一个音频实例。
         /// </summary>
-        /// <returns>构建的 Episode 实例。</returns>
+        /// <returns>构建的音频实例。</returns>
         public Episode Build()
         {
             if (id == Guid.Empty)
