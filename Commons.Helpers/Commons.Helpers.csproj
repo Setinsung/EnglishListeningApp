@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AsmResolver.DotNet" Version="5.4.0" />
+    <PackageReference Include="FluentValidation" Version="11.8.0" />
 	<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
