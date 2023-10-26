@@ -18,7 +18,7 @@ public interface IListeningRepository
     /// 异步获取所有分类信息。
     /// </summary>
     /// <returns>包含所有分类信息的集合。</returns>
-    public Task<IEnumerable<Category>> GetCategoriesAsync();
+    public Task<Category[]> GetCategoriesAsync();
 
     /// <summary>
     /// 异步获取分类信息中最大的序号。
@@ -53,7 +53,7 @@ public interface IListeningRepository
     /// </summary>
     /// <param name="categoryId">分类ID。</param>
     /// <returns>包含分类下所有专辑信息的集合。</returns>
-    public Task<IEnumerable<Album>> GetAlbumsByCategoryIdAsync(Guid categoryId);
+    public Task<Album[]> GetAlbumsByCategoryIdAsync(Guid categoryId);
     
     /// <summary>
     /// 添加专辑。
@@ -84,7 +84,7 @@ public interface IListeningRepository
     /// </summary>
     /// <param name="albumId">专辑ID。</param>
     /// <returns>包含专辑下所有音频信息的集合。</returns>
-    public Task<IEnumerable<Episode>> GetEpisodesByAlbumIdAsync(Guid albumId);
+    public Task<Episode[]> GetEpisodesByAlbumIdAsync(Guid albumId);
 
     /// <summary>
     /// 添加音频。
