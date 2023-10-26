@@ -13,15 +13,16 @@ public class ListeningDomainService
         this._listeningRepository = listeningRepository;
     }
 
-    public async Task<Guid> AddAlbumAsync(Guid categoryId, MultilingualString name)
+    public async Task<Album?> AddAlbumAsync(Guid categoryId, MultilingualString name)
     {
+        if (await _listeningRepository.GetCategoryByIdAsync(categoryId) == null) return null;
         int maxSeq = await _listeningRepository.GetMaxSeqOfAlbumsAsync(categoryId);
         var album = Album.Create(Guid.NewGuid(), maxSeq + 1, name, categoryId);
         await _listeningRepository.AddAlbumAsync(album);
-        return album.Id;
+        return album;
     }
 
-    public async Task SortAlbumAsync(Guid categoryId, IEnumerable<Guid> sortedAlbumIds)
+    public async Task SortAlbumsAsync(Guid categoryId, IEnumerable<Guid> sortedAlbumIds)
     {
         IEnumerable<Album> albums = await _listeningRepository.GetAlbumsByCategoryIdAsync(categoryId);
         var idsInDB = albums.Select(a => a.Id);
@@ -80,6 +81,4 @@ public class ListeningDomainService
             episode.ChangeSequenceNumber(seqNum++);
         }
     }
-
-
 }

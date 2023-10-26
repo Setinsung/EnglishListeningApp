@@ -43,6 +43,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listening.Domain", "Listeni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.Infrastructure", "Listening.Infrastructure\Listening.Infrastructure.csproj", "{AD64F1BA-1524-49F4-B021-5889BD2702E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.WebAPI.Main", "Listening.WebAPI.Main\Listening.WebAPI.Main.csproj", "{0AEA25D3-9B91-4AFB-98AD-882849089C77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.WebAPI.Admin", "Listening.WebAPI.Admin\Listening.WebAPI.Admin.csproj", "{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,6 +117,14 @@ Global
 		{AD64F1BA-1524-49F4-B021-5889BD2702E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD64F1BA-1524-49F4-B021-5889BD2702E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD64F1BA-1524-49F4-B021-5889BD2702E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AEA25D3-9B91-4AFB-98AD-882849089C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AEA25D3-9B91-4AFB-98AD-882849089C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AEA25D3-9B91-4AFB-98AD-882849089C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AEA25D3-9B91-4AFB-98AD-882849089C77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,6 +146,8 @@ Global
 		{779863CE-6099-418A-8418-E31BC610DEA4} = {DA201DAA-9ABA-40CB-B56A-F108F67CB3B8}
 		{306CF157-AD8F-4D7C-9A18-62DD1544F9D3} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
 		{AD64F1BA-1524-49F4-B021-5889BD2702E2} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
+		{0AEA25D3-9B91-4AFB-98AD-882849089C77} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
+		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {859416E3-73D7-43C0-9CCA-E9771F6EBDC2}
