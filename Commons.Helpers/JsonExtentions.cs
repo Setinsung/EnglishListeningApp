@@ -50,8 +50,30 @@ public static class JsonExtentions
     /// <returns>解析后的对象。</returns>
     public static T? ParseJson<T>(this string value)
     {
-        if (string.IsNullOrWhiteSpace(value)) return default(T);
+        if (string.IsNullOrWhiteSpace(value)) return default;
         var opt = CreateJsonSerializerOptions();
         return JsonSerializer.Deserialize<T>(value, opt);
+    }
+
+    /// <summary>
+    /// 尝试将JSON字符串解析为指定类型的对象。
+    /// </summary>
+    /// <typeparam name="T">要解析的目标类型。</typeparam>
+    /// <param name="value">要解析的JSON字符串。</param>
+    /// <param name="result">解析后的对象。</param>
+    /// <returns>如果解析成功，则为 true；否则为 false。</returns>
+    public static bool TryParseJson<T>(this string value, out T? result)
+    {
+        result = default;
+        try
+        {
+            result = ParseJson<T>(value);
+        }
+        catch (JsonException)
+        {
+            return false;
+        }
+        if(result == null) return false;
+        return true;
     }
 }
