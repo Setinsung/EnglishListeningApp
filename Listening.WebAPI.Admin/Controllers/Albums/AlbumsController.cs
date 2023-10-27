@@ -31,8 +31,8 @@ public class AlbumsController : ControllerBase
         return Ok(album);
     }
 
-    [HttpGet("category/{categoryId}")]
-    public async Task<ActionResult<Album[]>> FindByCategoryId([RequiredGuid] Guid categoryId)
+    [HttpGet("/list")]
+    public async Task<ActionResult<Album[]>> FindByCategoryId([RequiredGuid] [FromQuery] Guid categoryId)
     {
         var albums = await _listeningRepository.GetAlbumsByCategoryIdAsync(categoryId);
         return Ok(albums);

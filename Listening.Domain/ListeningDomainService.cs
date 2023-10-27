@@ -36,12 +36,12 @@ public class ListeningDomainService
         }
     }
 
-    public async Task<Guid> AddCategoryAsync(MultilingualString name, Uri coverUrl)
+    public async Task<Category> AddCategoryAsync(MultilingualString name, Uri coverUrl)
     {
         int maxSeq = await _listeningRepository.GetMaxSeqOfCategoriesAsync();
         var category = Category.Create(Guid.NewGuid(), maxSeq + 1, name, coverUrl);
         await _listeningRepository.AddCategoryAsync(category);
-        return category.Id;
+        return category;
     }
 
     public async Task SortCategoriesAsync(IEnumerable<Guid> sortedCategoryIds)
