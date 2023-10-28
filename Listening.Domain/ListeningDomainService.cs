@@ -58,14 +58,17 @@ public class ListeningDomainService
         }
     }
 
-    public async Task<Episode> AddEpisodeAsync(MultilingualString name, Guid albumId, Uri audioUrl, double durationInSecond, string subtitleType, string subtitle)
+    public async Task<Episode?> AddEpisodeAsync(MultilingualString name, Guid albumId, Uri audioUrl, double durationInSecond, string subtitleType, string subtitle)
     {
+        if (await _listeningRepository.GetAlbumByIdAsync(albumId) == null) return null;
         int maxSeq = await _listeningRepository.GetMaxSeqOfEpisodesAsync(albumId);
         var builder = new Episode.Builder();
         builder.Id(Guid.NewGuid()).SequenceNumber(maxSeq + 1).Name(name)
             .AlbumId(albumId).AudioUrl(audioUrl).DurationInSecond(durationInSecond)
             .SubtitleType(subtitleType).Subtitle(subtitle);
-        return builder.Build();
+        var episode = builder.Build();
+        await _listeningRepository.AddEpisodeAsync(episode);
+        return episode;
     }
 
     public async Task SortEpisodesAsync(Guid albumId, IEnumerable<Guid> sortedEpisodeIds)

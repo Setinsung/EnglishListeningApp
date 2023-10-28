@@ -42,7 +42,7 @@ public class AlbumsController : ControllerBase
     public async Task<ActionResult<Guid>> Add(AlbumAddRequest req)
     {
         Album? album = await _listeningDomainService.AddAlbumAsync(req.CategoryId, req.Name);
-        if (album == null) return NotFound("类别未找到");
+        if (album == null) return NotFound("专辑所在类别未找到");
         return Ok(album.Id);
     }
 
