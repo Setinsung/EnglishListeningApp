@@ -1,4 +1,6 @@
 using Commons.CommonInitializer;
+using Listening.WebAPI.Admin;
+using Listening.WebAPI.Admin.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.ConfigureDbConfiguration();
@@ -14,6 +16,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 //builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddScoped<EncodingEpisodeHelper>();
 builder.Services.AddSignalR();
 
 
@@ -25,6 +28,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Listening.WebAPI.Admin v1"));
 }
+
+app.MapHub<EpisodeEncodingStatusHub>("/Hubs/EpisodeEncodingStatusHub");
 
 app.UseCommonDefault();
 
