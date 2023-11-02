@@ -2,23 +2,22 @@
 
 namespace Commons.ASPNETCore;
 
-/// <summary>
-/// 内存缓存帮助类，验证不允许是IEnumerable和IQueryable，避开延迟加载。同时设置过期时间为expireSeconds至两倍expireSeconds之间随机偏移
-/// </summary>
-public class MemoryCacheHelper : IMemoryCacheHelper
+public static class MemoryCacheExtensions
 {
-    private readonly IMemoryCache _memoryCache;
-
-    public MemoryCacheHelper(IMemoryCache memoryCache)
-    {
-        this._memoryCache = memoryCache;
-    }
-    public TItem? GetOrCreate<TItem>(string cacheKey, Func<ICacheEntry, TItem> valueFactory, int expireSeconds = 60)
+    /// <summary>
+    /// 获取或创建指定缓存键的值。验证不允许是IEnumerable和IQueryable，避开延迟加载。同时设置过期时间为expireSeconds至两倍expireSeconds之间随机偏移。
+    /// </summary>
+    /// <typeparam name="TItem">值的类型</typeparam>
+    /// <param name="cacheKey">缓存键</param>
+    /// <param name="valueFactory">值的创建方法</param>
+    /// <param name="expireSeconds">缓存过期时间（以秒为单位），默认为60秒</param>
+    /// <returns>缓存值</returns>
+    public static TItem? GetOrCreate<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, TItem> valueFactory, int expireSeconds = 60)
     {
         ValidateValueType<TItem>();
-        if (!_memoryCache.TryGetValue(cacheKey, out TItem? result))
+        if (!memoryCache.TryGetValue(cacheKey, out TItem? result))
         {
-            using ICacheEntry entry = _memoryCache.CreateEntry(cacheKey);
+            using ICacheEntry entry = memoryCache.CreateEntry(cacheKey);
             InitCacheEntry(entry, expireSeconds);
             result = valueFactory(entry);
             entry.Value = result;
@@ -26,22 +25,25 @@ public class MemoryCacheHelper : IMemoryCacheHelper
         return result;
     }
 
-    public async Task<TItem?> GetOrCreateAsync<TItem>(string cacheKey, Func<ICacheEntry, Task<TItem>> valueFactory, int expireSeconds = 60)
+    /// <summary>
+    /// 异步获取或创建指定缓存键的值。验证不允许是IEnumerable和IQueryable，避开延迟加载。同时设置过期时间为expireSeconds至两倍expireSeconds之间随机偏移。
+    /// </summary>
+    /// <typeparam name="TItem">值的类型</typeparam>
+    /// <param name="cacheKey">缓存键</param>
+    /// <param name="valueFactory">值的创建方法</param>
+    /// <param name="expireSeconds">缓存过期时间（以秒为单位），默认为60秒</param>
+    /// <returns>缓存值</returns>
+    public static async Task<TItem?> GetOrCreateAsync<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, Task<TItem>> valueFactory, int expireSeconds = 60)
     {
         ValidateValueType<TItem>();
-        if (!_memoryCache.TryGetValue(cacheKey, out TItem? result))
+        if (!memoryCache.TryGetValue(cacheKey, out TItem? result))
         {
-            using ICacheEntry entry = _memoryCache.CreateEntry(cacheKey);
+            using ICacheEntry entry = memoryCache.CreateEntry(cacheKey);
             InitCacheEntry(entry, expireSeconds);
             result = await valueFactory(entry).ConfigureAwait(false);
             entry.Value = result;
         }
         return result;
-    }
-
-    public void Remove(string cacheKey)
-    {
-        _memoryCache.Remove(cacheKey);
     }
 
     /// <summary>
