@@ -1,11 +1,20 @@
+using Commons.CommonInitializer;
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
+builder.ConfigureDbConfiguration();
+builder.ConfigureExtraServices(new InitializerOptions
+{
+    LogFilePath = "e:/dev_log/Listening.Main.log",
+    EventBusQueueName = "Listening.WebAPI.Main"
+});
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new() { Title = "Listening.WebAPI.Main", Version = "v1" });
+});
+
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
@@ -13,12 +22,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Listening.WebAPI.Main v1"));
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCommonDefault();
 
 app.MapControllers();
 
