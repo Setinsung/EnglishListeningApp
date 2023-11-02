@@ -2,6 +2,9 @@
 
 namespace Commons.ASPNETCore;
 
+/// <summary>
+/// 内存缓存帮助类，验证不允许是IEnumerable和IQueryable，避开延迟加载。同时设置过期时间为expireSeconds至两倍expireSeconds之间随机偏移
+/// </summary>
 public class MemoryCacheHelper : IMemoryCacheHelper
 {
     private readonly IMemoryCache _memoryCache;
