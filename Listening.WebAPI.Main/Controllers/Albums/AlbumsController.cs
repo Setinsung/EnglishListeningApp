@@ -32,7 +32,7 @@ public class AlbumsController : ControllerBase
     }
 
     [HttpGet("/list")]
-    public async Task<ActionResult<IEnumerable<AlbumVM>>> FindByCategoryId([RequiredGuid] [FromQuery] Guid categoryId)
+    public async Task<ActionResult<IEnumerable<AlbumVM?>>> FindAllByCategoryId([RequiredGuid] [FromQuery] Guid categoryId)
     {
         var albums = await _memoryCache.GetOrCreateWithRandomExpiryAsync(
             $"AlbumsController.FindByCategoryId.{categoryId}",
