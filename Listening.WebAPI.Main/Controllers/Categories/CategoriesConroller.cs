@@ -23,7 +23,7 @@ public class CategoriesConroller : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryVM>> FindById([RequiredGuid] Guid id)
     {
-        var category = _memoryCache.GetOrCreateWithRandomExpiryAsync(
+        var category = await _memoryCache.GetOrCreateWithRandomExpiryAsync(
             $"CategoryController.FindById.{id}",
             async (e) => CategoryVM.Create(await _listeningRepository.GetCategoryByIdAsync(id))
         );
@@ -34,7 +34,7 @@ public class CategoriesConroller : ControllerBase
     [HttpGet("/list")]
     public async Task<ActionResult<IEnumerable<CategoryVM?>>> FindAll()
     {
-        var categories = _memoryCache.GetOrCreateWithRandomExpiryAsync(
+        var categories = await _memoryCache.GetOrCreateWithRandomExpiryAsync(
             $"CategoriesController.FindAll",
             async (e) => CategoryVM.Create(await _listeningRepository.GetCategoriesAsync())
         );
