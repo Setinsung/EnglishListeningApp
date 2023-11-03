@@ -12,7 +12,7 @@ public static class MemoryCacheExtensions
     /// <param name="valueFactory">值的创建方法</param>
     /// <param name="expireSeconds">缓存过期时间（以秒为单位），默认为60秒</param>
     /// <returns>缓存值</returns>
-    public static TItem? GetOrCreate<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, TItem> valueFactory, int expireSeconds = 60)
+    public static TItem? GetOrCreateWithRandomExpiry<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, TItem> valueFactory, int expireSeconds = 60)
     {
         ValidateValueType<TItem>();
         if (!memoryCache.TryGetValue(cacheKey, out TItem? result))
@@ -33,7 +33,7 @@ public static class MemoryCacheExtensions
     /// <param name="valueFactory">值的创建方法</param>
     /// <param name="expireSeconds">缓存过期时间（以秒为单位），默认为60秒</param>
     /// <returns>缓存值</returns>
-    public static async Task<TItem?> GetOrCreateAsync<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, Task<TItem>> valueFactory, int expireSeconds = 60)
+    public static async Task<TItem?> GetOrCreateWithRandomExpiryAsync<TItem>(this IMemoryCache memoryCache, string cacheKey, Func<ICacheEntry, Task<TItem>> valueFactory, int expireSeconds = 60)
     {
         ValidateValueType<TItem>();
         if (!memoryCache.TryGetValue(cacheKey, out TItem? result))
