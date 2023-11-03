@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Commons.ASPNETCore\Commons.ASPNETCore.csproj" />
     <ProjectReference Include="..\Commons.CommonInitializer\Commons.CommonInitializer.csproj" />
     <ProjectReference Include="..\Listening.Domain\Listening.Domain.csproj" />
     <ProjectReference Include="..\Listening.Infrastructure\Listening.Infrastructure.csproj" />
