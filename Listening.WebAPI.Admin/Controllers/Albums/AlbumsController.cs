@@ -31,7 +31,7 @@ public class AlbumsController : ControllerBase
         return Ok(album);
     }
 
-    [HttpGet("/list")]
+    [HttpGet("list")]
     public async Task<ActionResult<Album[]>> FindByCategoryId([RequiredGuid] [FromQuery] Guid categoryId)
     {
         var albums = await _listeningRepository.GetAlbumsByCategoryIdAsync(categoryId);
@@ -82,7 +82,7 @@ public class AlbumsController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("/sort/{categoryId}")]
+    [HttpPut("sort/{categoryId}")]
     public async Task<ActionResult> Sort([RequiredGuid] Guid categoryId, AlbumsSortRequest req)
     {
         await _listeningDomainService.SortAlbumsAsync(categoryId, req.SortedAlbumIds);

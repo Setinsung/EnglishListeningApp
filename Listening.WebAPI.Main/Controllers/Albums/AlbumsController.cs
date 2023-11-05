@@ -31,7 +31,7 @@ public class AlbumsController : ControllerBase
         return Ok(album);
     }
 
-    [HttpGet("/list")]
+    [HttpGet("list")]
     public async Task<ActionResult<IEnumerable<AlbumVM?>>> FindAllByCategoryId([RequiredGuid] [FromQuery] Guid categoryId)
     {
         var albums = await _memoryCache.GetOrCreateWithRandomExpiryAsync(

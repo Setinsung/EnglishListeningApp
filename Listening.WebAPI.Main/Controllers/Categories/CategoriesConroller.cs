@@ -31,7 +31,7 @@ public class CategoriesConroller : ControllerBase
         return Ok(category);
     }
 
-    [HttpGet("/list")]
+    [HttpGet("list")]
     public async Task<ActionResult<IEnumerable<CategoryVM?>>> FindAll()
     {
         var categories = await _memoryCache.GetOrCreateWithRandomExpiryAsync(

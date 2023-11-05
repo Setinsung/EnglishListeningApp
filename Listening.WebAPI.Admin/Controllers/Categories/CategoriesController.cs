@@ -66,7 +66,7 @@ public class CategoriesController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("/sort")]
+    [HttpPut("sort")]
     public async Task<ActionResult> Sort(CategoriesSortRequest req)
     {
         await _listeningDomainService.SortCategoriesAsync(req.SortedCategoryIds);

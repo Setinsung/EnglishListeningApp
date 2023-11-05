@@ -31,7 +31,7 @@ public class EpisodesController : ControllerBase
         return Ok(episode);
     }
 
-    [HttpGet("/list")]
+    [HttpGet("list")]
     public async Task<ActionResult<IEnumerable<EpisodeVM?>>> FindAllByAlbumId([RequiredGuid] [FromQuery] Guid albumId)
     {
         var episodes = await _memoryCache.GetOrCreateWithRandomExpiryAsync(

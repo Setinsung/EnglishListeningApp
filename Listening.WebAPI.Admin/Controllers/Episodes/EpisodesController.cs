@@ -78,14 +78,14 @@ public class EpisodesController : ControllerBase
         return episode;
     }
 
-    [HttpGet("/list")]
+    [HttpGet("list")]
     public async Task<ActionResult<Episode[]>> FindByAlbumId([RequiredGuid] [FromQuery] Guid albumId)
     {
         var episodes = await _listeningRepository.GetEpisodesByAlbumIdAsync(albumId);
         return episodes;
     }
 
-    [HttpGet("/encodings")]
+    [HttpGet("encodings")]
     public async Task<ActionResult<IEnumerable<EncodingEpisodeInfo>>> FindEncodingEpisodesByAlbumId([RequiredGuid][FromQuery] Guid albumId)
     {
         List<EncodingEpisodeInfo> list = new();
@@ -117,7 +117,7 @@ public class EpisodesController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut("/sort/{albumId}")]
+    [HttpPut("sort/{albumId}")]
     public async Task<ActionResult> Sort([RequiredGuid] Guid albumId, EpisodesSortRequest req)
     {
         await _listeningDomainService.SortEpisodesAsync(albumId, req.SortedEpisodeIds);
