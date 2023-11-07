@@ -41,7 +41,7 @@ public record EncodingItem : BaseEntity, IAggregateRoot, ICreatedTime
     public Uri? OutputUrl { get; private set; }
 
     /// <summary>
-    /// 转码目标类型，如m4a、mp4等
+    /// 转码目标文件格式，如m4a、mp4等
     /// </summary>
     public string OutputFormat { get; private set; }
 
@@ -113,7 +113,7 @@ public record EncodingItem : BaseEntity, IAggregateRoot, ICreatedTime
     /// <param name="id">转码文件任务id</param>
     /// <param name="name">待转码文件名称</param>
     /// <param name="sourceUrl">待转码文件路径</param>
-    /// <param name="outputFormat">转码目标类型</param>
+    /// <param name="outputFormat">转码目标文件格式</param>
     /// <param name="sourceSystem">待转码文件发送源系统</param>
     /// <returns>创建的转码文件任务</returns>
     public static EncodingItem Create(Guid id, string name, Uri sourceUrl, string outputFormat, string sourceSystem)
