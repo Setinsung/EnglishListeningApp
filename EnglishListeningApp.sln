@@ -41,11 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Listening", "Listening", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listening.Domain", "Listening.Domain\Listening.Domain.csproj", "{306CF157-AD8F-4D7C-9A18-62DD1544F9D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.Infrastructure", "Listening.Infrastructure\Listening.Infrastructure.csproj", "{AD64F1BA-1524-49F4-B021-5889BD2702E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listening.Infrastructure", "Listening.Infrastructure\Listening.Infrastructure.csproj", "{AD64F1BA-1524-49F4-B021-5889BD2702E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.WebAPI.Main", "Listening.WebAPI.Main\Listening.WebAPI.Main.csproj", "{0AEA25D3-9B91-4AFB-98AD-882849089C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listening.WebAPI.Main", "Listening.WebAPI.Main\Listening.WebAPI.Main.csproj", "{0AEA25D3-9B91-4AFB-98AD-882849089C77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listening.WebAPI.Admin", "Listening.WebAPI.Admin\Listening.WebAPI.Admin.csproj", "{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Listening.WebAPI.Admin", "Listening.WebAPI.Admin\Listening.WebAPI.Admin.csproj", "{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MediaEncoder", "MediaEncoder", "{BFA04958-E023-4C7B-9973-10B8C6AC4144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaEncoder.Domain", "MediaEncoder.Domain\MediaEncoder.Domain.csproj", "{1BCD9378-A6CB-45A7-B68D-0692A74248D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +129,10 @@ Global
 		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BCD9378-A6CB-45A7-B68D-0692A74248D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BCD9378-A6CB-45A7-B68D-0692A74248D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BCD9378-A6CB-45A7-B68D-0692A74248D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BCD9378-A6CB-45A7-B68D-0692A74248D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -148,6 +156,7 @@ Global
 		{AD64F1BA-1524-49F4-B021-5889BD2702E2} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
 		{0AEA25D3-9B91-4AFB-98AD-882849089C77} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
 		{19ED3A4C-1F62-480E-A1A2-F53ADE0F7960} = {9012F8C9-D697-4A76-9BA1-AC8BBB2A202D}
+		{1BCD9378-A6CB-45A7-B68D-0692A74248D4} = {BFA04958-E023-4C7B-9973-10B8C6AC4144}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {859416E3-73D7-43C0-9CCA-E9771F6EBDC2}
